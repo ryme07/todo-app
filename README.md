@@ -11,7 +11,7 @@ In the project directory, you can run:
 ### `npm start`
 
 Runs the app in the development mode.\
-Open EXPO in your localhost in your browser.
+Open EXPO in your browser.
 
 ## In Expo
 

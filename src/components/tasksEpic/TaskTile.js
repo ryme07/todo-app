@@ -1,15 +1,12 @@
 import React from "react";
 import { Text, View, Image, StyleSheet, TouchableOpacity } from "react-native";
+import { useDispatch } from "react-redux";
+import { toggleTask, deleteTask } from "../../redux/actions";
 
-export default function TaskTile({
-  id,
-  title,
-  completed,
-  onChangeStatus,
-  onDelete,
-}) {
+export default function TaskTile({ id, title, completed }) {
+  const dispatch = useDispatch();
   return (
-    <TouchableOpacity onPress={() => onChangeStatus(id)}>
+    <TouchableOpacity onPress={() => dispatch(toggleTask(id))}>
       <View style={styles.container}>
         <View style={styles.subcontainer}>
           <Image
@@ -26,7 +23,7 @@ export default function TaskTile({
             {title}
           </Text>
         </View>
-        <TouchableOpacity onPress={() => onDelete(id)}>
+        <TouchableOpacity onPress={() => dispatch(deleteTask(id))}>
           <Image
             style={styles.icon}
             source={require("../../../assets/icon_bin.png")}

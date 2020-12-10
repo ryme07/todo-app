@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 import { View, Button, TextInput, StyleSheet } from "react-native";
+import { useDispatch } from "react-redux";
+import { addTask } from "../../redux/actions";
 
-export default function TaskForm({ onAddTask }) {
+export default function TaskForm() {
   const [newTask, setnewTask] = useState("");
+
+  const dispatch = useDispatch();
 
   // add new text into input
   const _onChangeText = (value) => setnewTask(value);
@@ -11,7 +15,7 @@ export default function TaskForm({ onAddTask }) {
   const _onPressBtn = () => {
     const trimmedText = newTask.trim();
     if (trimmedText.length > 0 && trimmedText.length <= 28) {
-      onAddTask(newTask);
+      dispatch(addTask(newTask));
       setnewTask("");
     } else {
       console.log("error length");
